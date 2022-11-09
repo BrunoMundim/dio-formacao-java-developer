@@ -1,8 +1,11 @@
 package dio.mundim.junit;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+@Data
 public class Pessoa {
 
     private String nome;
@@ -13,16 +16,12 @@ public class Pessoa {
         this.dataDeNascimento = dataDeNascimento;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
     public int getIdade(){
         return (int) ChronoUnit.YEARS.between(this.dataDeNascimento, LocalDate.now());
+    }
+
+    public boolean ehMaiorDeIdade(){
+        return this.getIdade() >= 18;
     }
 
 }
